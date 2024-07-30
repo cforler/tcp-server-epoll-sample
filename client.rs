@@ -11,7 +11,7 @@ fn establish_connection(ip: &str, port: u16) -> io::Result<TcpStream> {
 fn client(stream: &mut TcpStream) -> io::Result<()> {
     let pid = id().to_string();
 
-    for counter in 1..=10 {
+    for counter in 1..=10_000 {
         let counter_str = counter.to_string();
         let message = format!("{}:{}", pid, counter_str);
         stream.write_all(message.as_bytes())?;
